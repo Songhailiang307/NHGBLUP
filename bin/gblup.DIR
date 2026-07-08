@@ -1,0 +1,42 @@
+$COMMENT
+Predict BV of age 100 using GBLUP with DMU4
+
+$ANALYSE 1 31 0 0
+
+$DATA  ASCII (2, 1,-9999) relphe.txt
+ 
+$VARIABLE
+# 1    2   
+id u 
+# 1  
+age
+
+
+$MODEL
+1 1 0 0 0                                                                               
+0  
+#Trait Weight n_effects Sex  HYS  Litter  ID ID
+ 1      0       2        2 1
+#Random  litter  Genetic
+1 1
+#Regressions
+0 
+#NoCov
+0                                                                               
+ 
+$VAR_STR  1 GREL ASCII GMA.txt_GINV_dmu
+
+
+$PRIOR  
+1  1  1    1.494644    
+2  1  1    1.9237215   
+ 
+   
+$DMUAI
+10	! Emstep = Number of steps before full weight on EM
+1.0d-7	! Conv_ndelta = Conv. criteria for norm of the update vector 
+1.0d-6 	! Conv_gnorm =	Conv. criteria for norm of the gradient vector (AI)
+1	! Printout = 1 -> Solution vector is printed/written to file SOL
+0	! Fspopt = 0 -> time  = 1 memory  optimized FSPAK
+0	! For development should always be zero (0)
+
